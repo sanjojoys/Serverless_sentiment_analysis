@@ -1,6 +1,6 @@
 Serverless Sentiment Analysis API
 
-A serverless, Python-powered application that uses AWS Lambda, Amazon API Gateway, and Amazon Comprehend to determine the sentiment (Positive, Negative, Neutral, or Mixed) of any given text. This project demonstrates how to build, deploy, and scale a sentiment analysis service without managing servers—and often at little to no cost under the AWS Free Tier.
+A serverless, Python-powered application that uses AWS Lambda, Amazon API Gateway, Amazon S3 and Amazon Comprehend to determine the sentiment (Positive, Negative, Neutral, or Mixed) of any given text. This project demonstrates how to build, deploy, and scale a sentiment analysis service without managing servers—and often at little to no cost under the AWS Free Tier.
 
 Table of Contents
 	1.	Project Overview
