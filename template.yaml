@@ -1,0 +1,26 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+
+Resources:
+  SentimentAnalysisFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: app.lambda_handler
+      Runtime: python3.9
+      CodeUri: src/
+      Timeout: 30  # Increase timeout to 30 seconds
+      MemorySize: 256  # Increase memory size if needed
+      MY_DYNAMO_TABLE: !Ref DynamoTableParameter
+      Policies:
+        - arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
+        - arn:aws:iam::aws:policy/ComprehendReadOnly
+      Events:
+        ApiGateway:
+          Type: Api
+          Properties:
+            Path: /analyze-sentiment
+            Method: POST
+    DynamoTableParameter:
+    Type: AWS::SSM::Parameter::Value<String>
+    Description: "DynamoDB table name"
+    Default: "/myapp/dynamo-table"
